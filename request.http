@@ -1,0 +1,74 @@
+### 1. Створення читача
+POST http://localhost:8080/api/readers
+Content-Type: application/json
+
+{
+  "name": "Dmytro",
+  "email": "dmytro@example.com"
+}
+
+### 2. Створення першої книги
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "title": "Clean Code",
+  "author": "Robert C. Martin",
+  "isbn": "9780132350884"
+}
+
+### 3. Створення другої книги
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "title": "The Pragmatic Programmer",
+  "author": "Andrew Hunt",
+  "isbn": "9780201616224"
+}
+
+### 4. Отримання книг
+GET http://localhost:8080/api/books
+
+### 5. Видача першої книги читателю
+POST http://localhost:8080/api/loans
+Content-Type: application/json
+
+{
+  "readerId": 1,
+  "bookId": 1
+}
+
+### 6. Активні видачі читателя
+GET http://localhost:8080/api/readers/1/loans/active
+
+### 7. Видача другої книги читателю
+POST http://localhost:8080/api/loans
+Content-Type: application/json
+
+{
+  "readerId": 1,
+  "bookId": 2
+}
+
+### 8. Створення третьої книги
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "title": "Java: The Complete Reference",
+  "author": "Herbert Schildt",
+  "isbn": "9781260440232"
+}
+
+### 9. Видача третьї книги(має не пройти)
+POST http://localhost:8080/api/loans
+Content-Type: application/json
+
+{
+  "readerId": 1,
+  "bookId": 3
+}
+
+### 10. Повернення першої книги
+POST http://localhost:8080/api/loans/1/return
